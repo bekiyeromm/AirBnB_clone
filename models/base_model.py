@@ -24,7 +24,11 @@ class BaseModel:
         to_dict(self):  returns a dictionary containing all keys/values
     """
     def __init__(self, *args, **kwargs):
-        """Initilizes class Base model attributes"""
+        """
+        Initilizes class Base model attributes
+
+
+        """
         if kwargs:
             for k, v in kwargs.items():
                 if "created_at" == k:
@@ -47,6 +51,10 @@ class BaseModel:
         """ print: [<class name>] (<self.id>) <self.__dict__>"""
         return "[{}] ({}) {}" \
                .format(self.__class__.__name__, self.id, self.__dict__)
+
+    def __repr__(self):
+        """Returns string representation"""
+        return (self.__str__())
 
     def save(self):
         """Updates the current time"""
