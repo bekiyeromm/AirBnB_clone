@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+from uuid import uuid4
+from datetime import datetime
+import models
+
 """
 Module base_model
 Defines BaseModel class
@@ -6,12 +10,7 @@ with public instance attribute
 """
 
 
-from uuid import uuid4
-from datetime import datetime
-import models
-
-
-class BaseModel:
+class BaseModel():
     """
     Base model for the drived classes
     attributes:
