@@ -11,15 +11,9 @@ import json
 
 
 class User(BaseModel):
-    """
-    Inherites from class BaseModel
-    public class attributes:
-        email(str): user email address
-        password(str): user password
-        first_name(str): user first name
-        last_name(str): user last name
-    """
-    email = ''
-    password = ''
-    first_name = ''
-    last_name = ''
+    """Inherites from class BaseModel"""
+
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""

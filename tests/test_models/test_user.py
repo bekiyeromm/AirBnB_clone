@@ -60,3 +60,7 @@ class TestUser(unittest.TestCase):
     def test_to_dict(self):
         """tests the to_dict method for user"""
         self.assertEqual("to_dict" in dir(self.user), True)
+
+
+if __name__ == "__main__":
+    unittest.main()
