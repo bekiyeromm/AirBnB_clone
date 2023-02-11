@@ -45,12 +45,29 @@ class TestUser(unittest.TestCase):
         self.assertTrue('created_at' in self.user.__dict__)
         self.assertTrue('updated_at' in self.user.__dict__)
 
-    def test_attribute_property(self):
-        """Tests attribute types"""
-        self.assertEqual(type(self.user.email), str)
-        self.assertEqual(type(self.user.password), str)
+    def test_first_name(self):
+        """test first name"""
         self.assertEqual(type(self.user.first_name), str)
+        self.assertEqual(self.user.first_name, "Yoseph")
+        self.assertIsNotNone(self.user.first_name)
+
+    def test_last_name(self):
+        """test first name"""
         self.assertEqual(type(self.user.last_name), str)
+        self.assertEqual(self.user.last_name, "Endale")
+        self.assertIsNotNone(self.user.last_name)
+
+    def test_email(self):
+        """test first name"""
+        self.assertEqual(type(self.user.email), str)
+        self.assertEqual(self.user.email, "endaleyoseph1@gmail.com")
+        self.assertIsNotNone(self.user.email)
+
+    def test_password(self):
+        """test first name"""
+        self.assertEqual(type(self.user.password), str)
+        self.assertEqual(self.user.password, "password")
+        self.assertIsNotNone(self.user.password)
 
     def test_save(self):
         """tests the save method in User"""
