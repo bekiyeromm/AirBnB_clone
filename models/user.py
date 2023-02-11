@@ -7,7 +7,7 @@ contains user's infomation
 
 
 from models.base_model import BaseModel
-import datetime
+import json
 
 
 class User(BaseModel):
