@@ -170,6 +170,64 @@ class HBNBCommand(cmd.Cmd):
         except Exception as e:
             print(e)
 
+    def do_count(self, line):
+        """Display count of instances specified"""
+        if line in self.class_dic:
+            count = 0
+            for key, objs in storage.all().items():
+                if line in key:
+                    count += 1
+            print(count)
+        else:
+            print("**class doesn't exist**")
+
+    def default(self, line):
+        """Accepts class name followed by arguement"""
+        args = line.split('.')
+        class_name = args[0]
+        if len(args) == 1:
+            print("*** Unknown syntax: {}".format(line))
+            return
+        try:
+            args = args[1].split('(')
+            command = args[0]
+            if command == 'all':
+                HBNBCommand.do_all(self, class_name)
+            elif command == 'count':
+                HBNBCommand.do_count(self, class_name)
+            elif command == 'show':
+                args = args[1].split(')')
+                id_ = args[0]
+                id_ = id_.strip("'")
+                id_ = id_.strip('"')
+                arg = class_name + ' ' + id_
+                HBNBCommand.do_show(self, arg)
+            elif command == 'destroy':
+                args = args[1].split(')')
+                id_ = args[0]
+                id_ = id_.strip("'")
+                id_ = id_.strip('"')
+                arg = class_name + ' ' + id_
+                HBNBCommand.do_destroy(self, arg)
+            elif command == 'update':
+                args = args[1].split(',')
+                id_ = args[0]
+                id_ = id_.strip("'")
+                id_ = id_.strip('"')
+                name_arg = args[1].strip(',')
+                val_arg = args[2]
+                name_arg = name_arg.strip(' ')
+                name_arg = name_arg.strip("'")
+                name_arg = name_arg.strip('"')
+                val_arg = val_arg.strip(' ')
+                val_arg = val_arg.strip(')')
+                arg = class_arg + ' ' + id_ + ' ' + name_arg + ' ' + val_
+                HBNBCommand.do_update(self, arg)
+            else:
+                print("*** Unknown syntax: {}".format(line))
+        except IndexError:
+            print("*** Unknown syntax: {}".format(line))
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
