@@ -49,20 +49,15 @@ class HBNBCommand(cmd.Cmd):
         create a new instance
         Usage create classname
         """
-        try:
-            classname = line
-            if classname == '':
-                raise KeyError("** class name missing **")
-            elif classname not in self.class_dic.keys():
-                raise NameError("** class doesn't exist **")
+        classname = line
+        if len(classname) == 0:
+            print("** class name missing **")
+        elif classname not in self.class_dic.keys():
+            print("** class doesn't exist **")
+        else:
             inst = self.class_dic[classname]()
             inst.save()
             print(inst.id)
-
-        except NameError as e:
-            print(e)
-        except KeyError as e:
-            print(e)
 
     def do_show(self, line):
         """
